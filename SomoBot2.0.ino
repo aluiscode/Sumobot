@@ -37,8 +37,10 @@ void setup() {
 }
 
 void loop() {
-  RobotEnemigo = sensado();///lectura de lis 8 
+  //Reading the sensor to find the oponent
+  RobotEnemigo = sensado(); //Read 4 sensors ultrasonics and 4 IR
 
+  // The oponent is in front
   if (RobotEnemigo == 0)
   {
     atacarAdelante();
@@ -52,6 +54,7 @@ void loop() {
     }
   }
 
+  // The oponent is on the right
   if(RobotEnemigo == 1)
   {
     referencia = menor;
@@ -77,7 +80,8 @@ void loop() {
 contador=0;
 RobotEnemigo = sensado();
 
- if(RobotEnemigo == 2 )
+  // The oponent is on the left
+  if(RobotEnemigo == 2 )
   {
     referencia = menor;
     SensorValue[0] = ultrafront.Ranging(CM);
@@ -102,6 +106,7 @@ RobotEnemigo = sensado();
   contador=0;
   RobotEnemigo = sensado();
 
+  //The oponent is behind
  if (RobotEnemigo == 3)          
   {  
       atacarAtras();
