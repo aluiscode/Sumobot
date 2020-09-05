@@ -21,6 +21,7 @@ boolean IBackLeft;
 byte SensorValue[4];             //Array ultrasonic
 int  InfraValue[4];              //Array ir sensors
 
+
 byte RobotEnemigo;
 byte referencia;
 byte menor;
@@ -28,11 +29,11 @@ int contador;
 
 void setup() {
   Serial.begin(9600);
-  pinMode(2, OUTPUT); //Motor izquierdo
+  pinMode(2, OUTPUT); //Left motor use two outputs to inverse direction
   pinMode(3, OUTPUT);
-  pinMode(4, OUTPUT); //Motor derecho
+  pinMode(4, OUTPUT); //Right motor use two outputs to inverse direction
   pinMode(5, OUTPUT);
-  delay(4900);
+  delay(4900);        //Five seconds to start fight
 }
 
 void loop() {
