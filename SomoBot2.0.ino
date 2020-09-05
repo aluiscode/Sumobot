@@ -41,12 +41,10 @@ void loop() {
   RobotEnemigo = sensado(); //Read 4 sensors ultrasonics and 4 IR
 
   // The oponent is in front
-  if (RobotEnemigo == 0)
-  {
+  if (RobotEnemigo == 0) {
     atacarAdelante();
     posicion(umbral);
-    if(IFrontRight!=rin || IFrontLeft!=rin)  //MODIFICAR A DETECTA LINEA
-    {
+    if(IFrontRight!=rin || IFrontLeft!=rin) {  //If touch rin line go back
       detenerMotores();
       atacarAtras();
       delay(1000);
@@ -55,59 +53,54 @@ void loop() {
   }
 
   // The oponent is on the right
-  if(RobotEnemigo == 1)
-  {
+  if(RobotEnemigo == 1) {
     referencia = menor;
     SensorValue[0] = ultrafront.Ranging(CM);
     SensorValue[3] = ultraback.Ranging(CM);
 
-    while ( SensorValue[0] > referencia  && SensorValue[3] > referencia )
-      {
-        giroDerecha();
-        SensorValue[0] = ultrafront.Ranging(CM);
-        SensorValue[3] = ultraback.Ranging(CM);
-        
-        contador += contador;
-        if (contador >= 40)
-        {
-          detenerMotores();
-          delay(200);
-          break;
-        }
+    while ( SensorValue[0] > referencia  && SensorValue[3] > referencia ) {
+      giroDerecha();
+      SensorValue[0] = ultrafront.Ranging(CM);
+      SensorValue[3] = ultraback.Ranging(CM);
+      contador += contador;
+      if (contador >= 40) {
+        detenerMotores();
+        delay(200);
+        break;
       }
-      detenerMotores();
-   }
-contador=0;
-RobotEnemigo = sensado();
+    }
+    detenerMotores();
+  }
+
+  contador=0;
+  RobotEnemigo = sensado();
 
   // The oponent is on the left
-  if(RobotEnemigo == 2 )
-  {
+  if(RobotEnemigo == 2 ) {
     referencia = menor;
     SensorValue[0] = ultrafront.Ranging(CM);
     SensorValue[3] = ultraback.Ranging(CM);
 
-    while ( SensorValue[0] < referencia  && SensorValue[3] < referencia  )
-      {
-        giroIzquierda();
-        SensorValue[0] = ultrafront.Ranging(CM);
-        SensorValue[3] = ultraback.Ranging(CM);
-        
-        contador += contador;
-        if (contador >= 40)
-        {
-          detenerMotores();
-          delay(200);
-          break;
-        }
+    while ( SensorValue[0] < referencia  && SensorValue[3] < referencia ) {
+      giroIzquierda();
+      SensorValue[0] = ultrafront.Ranging(CM);
+      SensorValue[3] = ultraback.Ranging(CM);
+
+      contador += contador;
+      if (contador >= 40) {
+        detenerMotores();
+        delay(200);
+        break;
       }
-      detenerMotores();
-   }
+    }
+    detenerMotores();
+  }
+
   contador=0;
   RobotEnemigo = sensado();
 
   //The oponent is behind
- if (RobotEnemigo == 3)          
+  if (RobotEnemigo == 3)          
   {  
       atacarAtras();
       posicion(umbral);
