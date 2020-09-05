@@ -119,6 +119,8 @@ void loop() {
   }
 }
 
+
+//Reading a ultrasonic sensors and saving distances in array
 byte sensado() {
   byte posicion = 0;
 
@@ -142,6 +144,7 @@ byte sensado() {
   return posicion;
 }
 
+// Reading IR sensors positions
 void posicion(int umbra) {
   InfraValue[0]= analogRead(2);
   InfraValue[1]= analogRead(1);
