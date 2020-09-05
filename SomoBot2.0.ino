@@ -11,13 +11,15 @@ Ultrasonic ultraleft(8, 9, 2610);
 boolean rin = 1;                  //Rin color 1=black 0=white
 int umbral=550;                   //Umbral 1024=black 0=white
 
+// IR sensors positions in sumobot
 boolean IFrontRight;
 boolean IFrontLeft;
 boolean IBackRight;
 boolean IBackLeft;
 
-byte SensorValue[4];             //Vector de Distancias
-int  InfraValue[4];              //Vector Infrarojos Anlogicos
+// Arrays to save data sensors
+byte SensorValue[4];             //Array ultrasonic
+int  InfraValue[4];              //Array ir sensors
 
 byte RobotEnemigo;
 byte referencia;
