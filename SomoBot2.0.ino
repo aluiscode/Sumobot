@@ -3,14 +3,13 @@
 /* (Trig PIN,Echo PIN, Max.TimeOut in µsec )
  *  centímetros * 58 = Max.TimeOut
  */
- 
 Ultrasonic ultraback(12, 13, 2610);
 Ultrasonic ultralright(10, 11, 2610);
 Ultrasonic ultrafront(6, 7, 2610);
 Ultrasonic ultraleft(8, 9, 2610);
 
-boolean rin = 1;                  //Color del dollo 1=negro 0=blanco
-int umbral=550;                   //Umbral sepracion de 1s y 0s
+boolean rin = 1;                  //Rin color 1=black 0=white
+int umbral=550;                   //Umbral 1024=black 0=white
 
 boolean IFrontRight;
 boolean IFrontLeft;
