@@ -120,7 +120,6 @@ void loop() {
 }
 
 byte sensado() {
-
   byte posicion = 0;
 
   SensorValue[0] = ultrafront.Ranging(CM);      //0 Enfrente
@@ -131,78 +130,67 @@ byte sensado() {
   menor = SensorValue[0];
 
   for (byte i = 0; i < 4; i++) {
-    if (SensorValue[i] < menor)
-    {
+    if (SensorValue[i] < menor) {
       menor = SensorValue[i];
       posicion = i;
     }
   }
-  if (posicion == 200)
-  {
+  if (posicion == 200) {
     posicion = 0;
   }
 
   return posicion;
 }
 
-void posicion(int umbra){
+void posicion(int umbra) {
   InfraValue[0]= analogRead(2);
   InfraValue[1]= analogRead(1);
   InfraValue[2]= analogRead(4);
   InfraValue[3]= analogRead(3);
 
-  for(int y=0;y<4;y++){
-     if (InfraValue[y]<=umbra)
-     {
-      InfraValue[y]=0;    
-     }
-     else
-     {
-      InfraValue[y]=1;
-     }
+  for(int i=0; i<4; i++) {
+    if (InfraValue[i]<=umbra) {
+      InfraValue[i]=0;
+    } else {
+      InfraValue[i]=1;
+    }
   }
 
   IFrontRight=InfraValue[0];
   IFrontLeft =InfraValue[1];
   IBackRight =InfraValue[2];
   IBackLeft  =InfraValue[3];
-   
 }
 
-void atacarAdelante()
-{
+void atacarAdelante() {
   digitalWrite(2, LOW);
   digitalWrite(4, LOW);
   digitalWrite(3, HIGH);
   digitalWrite(5, HIGH);
 }
 
-void atacarAtras()
-{
+void atacarAtras() {
   digitalWrite(3, LOW);
   digitalWrite(5, LOW);
   digitalWrite(2, HIGH);
   digitalWrite(4, HIGH);
 }
 
-void giroDerecha()
-{
+void giroDerecha() {
   digitalWrite(2, LOW);
   digitalWrite(5, LOW);
   digitalWrite(4, HIGH);
   digitalWrite(3, HIGH);
 }
 
-void giroIzquierda()
-{
+void giroIzquierda() {
   digitalWrite(4, LOW);
   digitalWrite(3, LOW);
   digitalWrite(2, HIGH);
   digitalWrite(5, HIGH);
 }
 
-void detenerMotores()
-{
+void detenerMotores() {
   for (byte i = 2; i < 6; i++)
   {
     digitalWrite(i, LOW);
