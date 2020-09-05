@@ -100,26 +100,23 @@ void loop() {
   RobotEnemigo = sensado();
 
   //The oponent is behind
-  if (RobotEnemigo == 3)          
-  {  
-      atacarAtras();
-      posicion(umbral);
-      if(IBackRight!=rin || IBackLeft!=rin)
-      {
+  if (RobotEnemigo == 3) {
+    atacarAtras();
+    posicion(umbral);
+    if(IBackRight!=rin || IBackLeft!=rin) {
       detenerMotores();
       atacarAdelante();
       delay(800);
       detenerMotores();
-      }
+    }
   }
 
-  if (menor>=40)
-  {
+  // Searching oponent
+  if (menor>=40) {
     giroDerecha();
     delay(500);
     detenerMotores();
   }
-   
 }
 
 byte sensado() {
